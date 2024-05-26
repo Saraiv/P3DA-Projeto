@@ -22,9 +22,10 @@ Shader "Custom/Freznel"{
 
         void surf(Input IN, inout SurfaceOutput o){
             float dotP = dot(normalize(IN.viewDir), normalize(o.Normal));
+            float dotPos = dot(normalize(IN.worldPos), IN.viewDir);
             
             o.Alpha = pow(frac(dotP), 4);
-            o.Albedo = _Cor * saturate(dotP);
+            o.Albedo = _Cor * saturate(dotPos); //floor saturate trunc
             o.Emission = _Cor2 * (1 - dotP);
         }
         ENDCG
