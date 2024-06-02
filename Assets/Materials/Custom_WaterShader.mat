@@ -57,11 +57,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.378
+    - _Alpha: 0.86
     - _Amplitude: 1.05
     - _Glossiness: 0.706
     - _Metallic: 0.719
-    - _NormalStrength: 0.414
+    - _NormalStrength: 0.327
     - _Scale: 0.0245
     - _SoftFactor: 2.18
     - _Speed: 0.287
