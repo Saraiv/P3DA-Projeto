@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_Fresnel
-  m_Shader: {fileID: 4800000, guid: 94ae5276076dfb582a2bffbecec503f2, type: 3}
+  m_Name: Custom_Dissolve
+  m_Shader: {fileID: 4800000, guid: e75c877d49c53974ca01e38b2e019649, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -16,34 +16,30 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlbedoTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DissolveTexture:
-        m_Texture: {fileID: 2800000, guid: 3e410d928f7a3d50ab640e4ae2e52627, type: 3}
+    - _DissolveTex:
+        m_Texture: {fileID: 2800000, guid: 083739aece4e41c40924fe322c34a6d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 851f94f9ac76f8f4289baec1ebd79a22, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AmountDissolve: 0.004
-    - _Slider: -1
+    - _DissolveAmount: 0.445
+    - _Glossiness: 0.5
+    - _GlowFalloff: 0.136
+    - _GlowRange: 0.014
+    - _Metallic: 0
     m_Colors:
-    - _Cor: {r: 0.6414124, g: 0.74840844, b: 0.6031028, a: 1}
-    - _Cor2: {r: 0.556993, g: 1, b: 0.556993, a: 1}
+    - _Color: {r: 0.06209136, g: 0.16981131, b: 0.04085083, a: 1}
+    - _Emission: {r: 0.21198602, g: 0.3490566, b: 0.16629584, a: 1}
+    - _GlowColor: {r: 0.6037736, g: 0.6037736, b: 0.31612673, a: 1}
   m_BuildTextureStacks: []
