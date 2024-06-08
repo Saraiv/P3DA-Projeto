@@ -1,60 +1,48 @@
 Shader "Custom/Ship"{
-    Properties{
-        _Largura ("Square Size", Range(0,1)) = 0.1
-        _Cor ("Square Color", Color) = (1,1,1,1)
-        _Position ("Position", Vector) = (0,0,0,0)
+    Properties{     
+        _MainTex ("Main Texture", 2D) = "defaulttexture" {}   
+        _Position ("Position", Vector) = (1,1,1,0)
+        _Largura ("Largura", Range (-2, 2)) = 0
+        _Cor ("Cor", Color) = (1,1,1,1)
     }
+
     SubShader{
-        Tags { "RenderType"="Opaque" }
-        Blend SrcAlpha OneMinusSrcAlpha
-        Pass{
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+        Cull off
+        CGPROGRAM
+        #pragma surface surf Lambert alpha:fade
+        struct Input {
+            float2 uv_MainTex;
+            float3 worldPos;
+        };
 
-            #include "UnityCG.cginc"
+        sampler2D _MainTex;
+        half4 _Cor;
+        float3 _Position;
+        float _Largura;
 
-            struct appdata{
-                float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
-            };
-
-            struct v2f{
-                float2 uv : TEXCOORD0;
-                float3 worldPos : TEXCOORD1;
-                float4 vertex : SV_POSITION;
-            };
-
-            float _Largura;
-            float4 _Cor;
-            float4 _Position;
-
-            v2f vert (appdata v){
-                v2f o;
-                o.worldPos = mul(unity_ObjectToWorld, v.vertex);
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                return o;
-            }
-
-            int isInsideSquare(float2 center, float lado, float2 ponto){
-                if(ponto.x > center.x - lado && ponto.x < center.x + lado && 
-                   ponto.y > center.y - lado && ponto.y < center.y + lado){
-                    return 1;
-                }else{
-                    return 0;
-                }
-            }
-
-            fixed4 frag (v2f i) : SV_Target{                
-                if (isInsideSquare(_Position, _Largura, i.worldPos.xy)){
-                    return fixed4(0, 0, 0, 0);
-                }
-                
-                return _Cor;
-            }
-            ENDCG
+        bool isInsideSquare(float3 worldP, float3 pontT, float rang){
+            return (worldP.y > pontT.y -rang &&  worldP.y < pontT.y  + rang
+            && worldP.x > pontT.x -rang &&  worldP.x < pontT.x  + rang);
         }
+
+        bool isInsideSphere(float3 worldP, float3 center, float radius) {
+            return distance(worldP, center) < radius;
+        }
+
+
+        void surf(Input IN, inout SurfaceOutput o) {
+            float3 base = tex2D(_MainTex, IN.uv_MainTex);
+
+            if(isInsideSquare(IN.worldPos, _Position, _Largura)){
+                o.Albedo = base;
+                o.Alpha = 0;
+            }else{
+                o.Albedo = _Cor;
+                o.Alpha = 1;
+            }
+        }
+
+        ENDCG
     }
     FallBack "Diffuse"
 }

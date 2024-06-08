@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_Ship
+  m_Name: Custom_Ship
   m_Shader: {fileID: 4800000, guid: afa6bf663d562f94cac44a2c0f1125e2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -34,7 +34,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Glossiness: 0.5
-    - _Largura: 0.05
+    - _Largura: 0.28
     - _Metallic: 0
     - _range: 0
     m_Colors:
@@ -42,6 +42,6 @@ Material:
     - _Cor: {r: 0.4245283, g: 0.20118213, b: 0.05006229, a: 1}
     - _Cor2: {r: 0.5176471, g: 0.32156864, b: 0.050980393, a: 1}
     - _MousePos: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: -22.138367, g: -0.87293625, b: 0, a: 0}
+    - _Position: {r: 11.6464, g: 0.48798, b: 0, a: 0}
     - _pontoTeste: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

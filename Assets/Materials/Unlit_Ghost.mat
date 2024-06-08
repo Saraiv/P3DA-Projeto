@@ -28,11 +28,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlitchTex:
-        m_Texture: {fileID: 2800000, guid: 966be95bb8a110e44a96105e5145868f, type: 3}
+        m_Texture: {fileID: 2800000, guid: ad3207bfd65813d45b94f6cc60eff6a8, type: 3}
         m_Scale: {x: 6, y: 6}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 083739aece4e41c40924fe322c34a6d0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8a16cefc565b3a5418eceb83b9a82c58, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:

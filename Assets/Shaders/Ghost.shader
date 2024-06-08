@@ -38,9 +38,9 @@ Shader "Custom/Ghost" {
             }
 
             fixed4 frag (v2f i) : SV_Target {
-                float2 glitchUV = i.uv + float2(_Time.w / 2, _Time.w / 2); // Add time-dependent offset
-                float2 glitch = tex2D(_GlitchTex, glitchUV); // Use red and green channels for glitch
-                float2 uv = i.uv + glitch * 0.1; // Displace UV coordinates
+                // float2 glitchUV = i.uv + float2(_Time.w / 2, _Time.w / 2); // Add time-dependent offset
+                // float2 glitch = tex2D(_GlitchTex, glitchUV); // Use red and green channels for glitch
+                float2 uv = i.uv * 0.1; // Displace UV coordinates
                 fixed4 tex = tex2D(_MainTex, uv); // Sample main texture with displaced UVs
                 fixed4 col = _Color * tex;
                 col.a = 0.1;
