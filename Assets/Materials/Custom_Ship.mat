@@ -42,6 +42,6 @@ Material:
     - _Cor: {r: 0.4245283, g: 0.20118213, b: 0.05006229, a: 1}
     - _Cor2: {r: 0.5176471, g: 0.32156864, b: 0.050980393, a: 1}
     - _MousePos: {r: 0, g: 0, b: 0, a: 0}
-    - _Position: {r: 11.6464, g: 0.48798, b: 0, a: 0}
+    - _Position: {r: 0, g: 0, b: 0, a: 0}
     - _pontoTeste: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
