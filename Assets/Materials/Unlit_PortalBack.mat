@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_Portal2
-  m_Shader: {fileID: 4800000, guid: eab32a732c95304498ec15b5cb0118cd, type: 3}
+  m_Name: Unlit_PortalBack
+  m_Shader: {fileID: 4800000, guid: 4598bdcb4cc2371458f2ea645f2f6074, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -30,6 +30,6 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0.2303831, g: 0.5943396, b: 0.10933607, a: 1}
-    - _Color2: {r: 0.21595761, g: 0.21698111, b: 0.21606816, a: 1}
+    - _Color: {r: 0.23137255, g: 0.59607846, b: 0.10980392, a: 1}
+    - _Color2: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 1}
   m_BuildTextureStacks: []

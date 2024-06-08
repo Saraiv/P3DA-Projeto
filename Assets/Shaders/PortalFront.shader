@@ -1,10 +1,11 @@
-Shader "Unlit/Portal2"{
+Shader "Unlit/PortalFront"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
         _Color ("Color", Color) = (1,1,1,1)
         _Color2 ("Color2", Color) = (1,1,1,1)
     }
     SubShader{
+        Cull Front
         Pass{
             CGPROGRAM
             #pragma vertex vert

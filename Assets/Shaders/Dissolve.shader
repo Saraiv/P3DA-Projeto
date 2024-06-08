@@ -29,7 +29,7 @@ Shader "Custom/Dissolve"{
         float _GlowFalloff;
 
         void surf(Input IN, inout SurfaceOutput o){
-            float dissolve = tex2D(_DissolveTex, IN.uv_DissolveTex).r;
+            float dissolve = tex2D(_DissolveTex, IN.uv_DissolveTex);
             // dissolve = dissolve;
             float isVisible = dissolve - _DissolveAmount;
             clip(isVisible);
