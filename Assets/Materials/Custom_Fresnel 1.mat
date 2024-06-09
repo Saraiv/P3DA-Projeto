@@ -44,6 +44,6 @@ Material:
     - _AmountDissolve: 0.004
     - _Slider: -1
     m_Colors:
-    - _Cor: {r: 0.6414124, g: 0.74840844, b: 0.6031028, a: 1}
-    - _Cor2: {r: 0.556993, g: 1, b: 0.556993, a: 1}
+    - _Cor: {r: 0.25752163, g: 0.9528302, b: 0, a: 1}
+    - _Cor2: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
   m_BuildTextureStacks: []
