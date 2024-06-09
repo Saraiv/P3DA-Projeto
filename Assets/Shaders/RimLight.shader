@@ -1,8 +1,9 @@
 Shader "Custom/RimLight"{
     Properties{
-        _Color ("Color", Color) = (1, 1, 1, 1)
-        _Color2 ("Color", Color) = (1, 1, 1, 1)
-        _Slider ("Slider", Range(0.0019, 0.1)) = 0
+        _Cor ("Cor", Color) = (1, 1, 1, 1)
+        _Cor2 ("Cor", Color) = (1, 1, 1, 1)
+        _RimIntensity ("Rim Intensity", Range (0, 1)) = 0
+        _RimPower ("Rim Power", Range (0, 5)) = 1
     }
 
     SubShader{
@@ -12,19 +13,30 @@ Shader "Custom/RimLight"{
 
         struct Input{
             float3 viewDir;
+            float3 worldNormal;
         };
         
-        fixed4 _Color;
-        fixed4 _Color2;
-        float _Slider;
+        fixed4 _Cor;
+        fixed4 _Cor2;
+        float _RimIntensity;
+        float _RimPower;
+
+        float4 rimLight(float4 color, float3 normal, float3 viewDirection){
+            float NdotV = 1 - dot(normal, viewDirection);
+            NdotV = pow(NdotV, _RimPower);
+            NdotV *= _RimIntensity;
+            float4 finalColor = lerp(color, _Cor, NdotV);
+            return finalColor;
+        }
 
         void surf (Input IN, inout SurfaceOutput o){
-            float dotp =  dot(normalize(IN.viewDir), normalize(o.Normal));
-            
-            float effect = pow(_Slider * (1 - dotp), 1 - dotp);
-            o.Alpha = _Slider;
-            o.Albedo = _Color;
-            o.Emission = (_Color2 * effect) / _Slider;
+            fixed4 col = _Cor;
+            o.Normal = normalize(o.Normal);
+            IN.viewDir = normalize(IN.viewDir);
+            col = rimLight(col, o.Normal, IN.viewDir);
+            o.Albedo = col.rgb;
+            o.Alpha = _RimIntensity;
+            o.Emission = _Cor2.rgb;
         }
         ENDCG
     }
