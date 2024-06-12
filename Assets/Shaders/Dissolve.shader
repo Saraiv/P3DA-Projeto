@@ -41,9 +41,18 @@ Shader "Custom/Dissolve"{
             && worldP.x > pontT.x -rang &&  worldP.x < pontT.x  + rang);
         }
 
+        bool isInsideCircle(float3 worldP, float3 pointT, float radius) {
+            float dx = worldP.x - pointT.x;
+            float dy = worldP.y - pointT.y;
+            float distanceSquared = dx * dx + dy * dy;
+            float radiusSquared = radius * radius;
+
+            return distanceSquared <= radiusSquared;
+        }
+
         void surf(Input IN, inout SurfaceOutput o){
             float3 base = tex2D(_DissolveTex, IN.uv_DissolveTex);
-            if(isInsideSquare(IN.worldPos, _Position, _Largura)){
+            if(isInsideCircle(IN.worldPos, _Position, _Largura)){
                 o.Alpha = 0;
             }else{
                 float isVisible = base - _DissolveAmount;

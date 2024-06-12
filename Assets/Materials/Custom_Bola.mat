@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 3e410d928f7a3d50ab640e4ae2e52627, type: 3}
+        m_Texture: {fileID: 2800000, guid: 083739aece4e41c40924fe322c34a6d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -39,7 +39,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Cor1: {r: 0.08469059, g: 0.254717, b: 0.044455323, a: 1}
-    - _Cor2: {r: 0.19291253, g: 0.2264151, b: 0.18476327, a: 1}
+    - _Cor2: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     - _Cor3: {r: 0, g: 0, b: 1, a: 1}
     - _cor1: {r: 1, g: 0, b: 0, a: 1}
     - _cor2: {r: 0, g: 1, b: 0, a: 1}

@@ -33,15 +33,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolveAmount: 0
+    - _DissolveAmount: 1.0957699
     - _Glossiness: 0.5
-    - _GlowFalloff: 0.001
-    - _GlowRange: 0
-    - _Largura: 0.34
+    - _GlowFalloff: 0.136
+    - _GlowRange: 0.014
+    - _Largura: 0.4
     - _Metallic: 0
     m_Colors:
     - _Color: {r: 0.16862746, g: 0.14450094, b: 0.039215688, a: 1}
     - _Emission: {r: 0.34901962, g: 0.27416235, b: 0.16470589, a: 1}
     - _GlowColor: {r: 0.6039216, g: 0.5119609, b: 0.31764707, a: 1}
-    - _Position: {r: 0, g: 0, b: 0, a: 0}
+    - _Position: {r: 11.646447, g: 0.72341996, b: 0, a: 0}
   m_BuildTextureStacks: []
