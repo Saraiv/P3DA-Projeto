@@ -24,7 +24,6 @@ public class CollisionDetection : MonoBehaviour{
     void Update(){
         if(finished){
             secondTimer += Time.deltaTime;
-            Debug.Log(secondTimer);
             mat.SetFloat("_DissolveAmount", secondTimer / 10);
         }
     }
