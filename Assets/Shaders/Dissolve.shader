@@ -9,14 +9,19 @@ Shader "Custom/Dissolve"{
         _GlowColor("Glow Color", Color) = (1, 1, 1, 1)
         _GlowRange("Glow Range", Range(0, .3)) = 0.1
         _GlowFalloff("Glow Falloff", Range(0.001, .3)) = 0.1
+
+        _Position ("Position", Vector) = (1,1,1,0)
+        _Largura ("Largura", Range (-2, 2)) = 0
     }
     SubShader{
         Cull off
+        Tags{ "IgnoreProjector" = "True" "RenderType" = "Opaque" }
         CGPROGRAM
-        #pragma surface surf Lambert
+        #pragma surface surf Lambert alpha
 
         struct Input{
             float2 uv_DissolveTex;
+            float3 worldPos;
         };
 
         fixed4 _Color;
@@ -28,17 +33,30 @@ Shader "Custom/Dissolve"{
         float _GlowRange;
         float _GlowFalloff;
 
+        float3 _Position;
+        float _Largura;
+
+        bool isInsideSquare(float3 worldP, float3 pontT, float rang){
+            return (worldP.y > pontT.y -rang &&  worldP.y < pontT.y  + rang
+            && worldP.x > pontT.x -rang &&  worldP.x < pontT.x  + rang);
+        }
+
         void surf(Input IN, inout SurfaceOutput o){
-            float dissolve = tex2D(_DissolveTex, IN.uv_DissolveTex);
-            // dissolve = dissolve;
-            float isVisible = dissolve - _DissolveAmount;
-            clip(isVisible);
+            float3 base = tex2D(_DissolveTex, IN.uv_DissolveTex);
+            if(isInsideSquare(IN.worldPos, _Position, _Largura)){
+                o.Alpha = 0;
+            }else{
+                float isVisible = base - _DissolveAmount;
+                clip(isVisible);
 
-            float isGlowing = smoothstep(_GlowRange + _GlowFalloff, _GlowRange, isVisible);
-            float3 glow = isGlowing * _GlowColor;
+                float isGlowing = smoothstep(_GlowRange + _GlowFalloff, _GlowRange, isVisible);
+                float3 glow = isGlowing * _GlowColor;
 
-            o.Albedo = _Color;
-            o.Emission = _Emission + glow;
+                o.Albedo = _Color;
+                o.Emission = _Emission + glow;
+                o.Alpha = 1;
+            }
+            
         }
         ENDCG
     }

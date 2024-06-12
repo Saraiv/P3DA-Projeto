@@ -22,7 +22,6 @@ public class AnimationController : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         if (!isAnimationStatePlaying(animator, 0, "Dying")){
-            Debug.Log("Dying finished playing");
             deadPirate.SetActive(true);
         }
     }

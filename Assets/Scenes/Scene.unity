@@ -1308,13 +1308,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 642061883577416321, guid: 9719ef477f8405f4088489015b1a1473, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 642061883577416321, guid: 9719ef477f8405f4088489015b1a1473, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 286b7496783d3fa48a12b4c09a2bcd0f, type: 2}
+      objectReference: {fileID: 2100000, guid: 506149cdd2310b34f81f51f8e0ac5669, type: 2}
+    - target: {fileID: 642061883577416321, guid: 9719ef477f8405f4088489015b1a1473, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2097871469303111846, guid: 9719ef477f8405f4088489015b1a1473, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a5a813ea81db9e842a04ccd82c114d15, type: 2}
+      objectReference: {fileID: 2100000, guid: 506149cdd2310b34f81f51f8e0ac5669, type: 2}
     - target: {fileID: 5938712148903082452, guid: 9719ef477f8405f4088489015b1a1473, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.036567
@@ -1378,7 +1386,7 @@ PrefabInstance:
     - target: {fileID: 6975572541605278045, guid: 9719ef477f8405f4088489015b1a1473, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e556a366b33609d568d8e0c6aa1cea9c, type: 2}
+      objectReference: {fileID: 2100000, guid: 506149cdd2310b34f81f51f8e0ac5669, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5996805693626662921, guid: 9719ef477f8405f4088489015b1a1473, type: 3}
@@ -1408,8 +1416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4e9d0b1b4daef46b08533d22c08bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 286b7496783d3fa48a12b4c09a2bcd0f, type: 2}
+  mat: {fileID: 2100000, guid: 506149cdd2310b34f81f51f8e0ac5669, type: 2}
   position: {x: 0, y: 0, z: 0}
+  timer: 0
+  secondTimer: 0
+  finished: 0
 --- !u!65 &1786271148
 BoxCollider:
   m_ObjectHideFlags: 0
