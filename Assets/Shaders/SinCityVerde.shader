@@ -1,7 +1,10 @@
 Shader "Unlit/SinCityVerde"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
-        _Slider ("Slider", Range(0,1)) = 0.5
+        _SliderCor ("Slider Cor", Range(0,1)) = 0.5
+
+        _TextureTransition ("Textura transition", 2D) = "white" {}
+        _SliderTransition("Slider transition", Range(-0.1,1)) = 0
     }
 
     SubShader{
@@ -32,16 +35,24 @@ Shader "Unlit/SinCityVerde"{
             }
 
             sampler2D _MainTex;
-            float _Slider;
+            sampler2D _TextureTransition;
+            float _SliderCor;
+            float _SliderTransition;
 
             fixed4 frag (v2f i) : SV_Target{
                 fixed4 col = tex2D(_MainTex, i.uv);
-                if(col.g > col.r + _Slider && col.g > col.b + _Slider){
-                    col.rgb = float3(((col.r + col.b) / 3), col.g, ((col.r + col.b) / 3));
+                fixed4 col2 = tex2D(_TextureTransition, i.uv);
+
+                if((col2.r+col2.g+col2.b)/3 > _SliderTransition){
+                    if(col.g > col.r + _SliderCor && col.g > col.b + _SliderCor){
+                        col.rgb = float3(((col.r + col.b) / 3), col.g, ((col.r + col.b) / 3));
+                    }else{
+                        col.rgb = float3((col.r+col.g+col.b)/3,(col.r+col.g+col.b)/3,(col.r+col.g+col.b)/3);
+                    }
+                    return col;
                 }else{
-                    col.rgb = float3((col.r+col.g+col.b)/3,(col.r+col.g+col.b)/3,(col.r+col.g+col.b)/3);
+                    return float4(0,0,0,1);
                 }
-                return col;
             }
             ENDCG
         }

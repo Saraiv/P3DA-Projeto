@@ -27,8 +27,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureTransition:
+        m_Texture: {fileID: 2800000, guid: 232d69a340f46624b984ae1fa3973e03, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _Slider: 0
+    - _SliderCor: 0.1
+    - _SliderTransition: -0.6745132
     m_Colors: []
   m_BuildTextureStacks: []
