@@ -10,7 +10,7 @@ public class PostProcSinCityVerde : MonoBehaviour{
 
     public void Start(){
         secondTimer = 0;
-        mat.SetFloat("_SliderTransition", 1);
+        mat.SetFloat("_SliderTransition", -0.01f);
     }
 
     void OnRenderImage(RenderTexture src, RenderTexture dest){
@@ -24,7 +24,7 @@ public class PostProcSinCityVerde : MonoBehaviour{
 
         if(finished){
             secondTimer += Time.deltaTime;
-            mat.SetFloat("_SliderTransition", 1 - (secondTimer / 5));
+            mat.SetFloat("_SliderTransition", secondTimer / 5);
         }
     }
 }
