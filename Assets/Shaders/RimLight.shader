@@ -30,7 +30,7 @@ Shader "Custom/RimLight"{
         }
 
         void surf (Input IN, inout SurfaceOutput o){
-            fixed4 col = _Cor;
+            float4 col = _Cor;
             o.Normal = normalize(o.Normal);
             IN.viewDir = normalize(IN.viewDir);
             col = rimLight(col, o.Normal, IN.viewDir);

@@ -40,9 +40,9 @@ Shader "Unlit/PortalBack"{
                 float2 f = smoothstep(0.0, 1.0, p);
 
                 float q11 = randomNoise(base);
-                float q12 = randomNoise(float2(base.x, base.y + 1.0));
-                float q21 = randomNoise(float2(base.x + 1.0, base.y));
-                float q22 = randomNoise(float2(base.x + 1.0, base.y + 1.0));
+                float q12 = randomNoise(float2(base.x, base.y + 1.));
+                float q21 = randomNoise(float2(base.x + 1., base.y));
+                float q22 = randomNoise(float2(base.x + 1., base.y + 1.));
 
                 float r1 = lerp(q11, q21, f.x);
                 float r2 = lerp(q12, q22, f.x);
@@ -64,28 +64,28 @@ Shader "Unlit/PortalBack"{
             }
 
             float perlinNoise(float2 p){
-                float t = _Time.w * 3.0;
-                float a = 0.5;
-                float total = 0.0;
+                float t = _Time.w * 3.;
+                float a = .5;
+                float total = 0.;
                 float2 bp = p;
 
-                for (int i = 1; i < 7; ++i){
-                    p += t * 1.6;
-                    bp -= t * 2.6;
+                for (float i = 1.; i < 7.; i++){
+                    p += t * 1.;
+                    bp -= t * 2.;
                     
-                    float2 gr = gradn(i * p * 0.34 + t) * 100.0;
+                    float2 gr = gradn(i * p *0.34 + t) * 100.;
                     
-                    gr = mul(makeRotM2(i * t * 0.05 + 0.8), gr);
+                    gr = mul(makeRotM2(i * t * .05 + .8), gr);
                     
                     p += gr;
                     
-                    total += (sin(BINoise(p) * 7.0) * 0.5 + 0.5) * a;
+                    total += (sin(BINoise(p) * 7.) * .5 + .5) * a;
                     
-                    p = lerp(bp, p, 0.77);
+                    p = lerp(bp, p, .77);
                     
-                    a *= 0.75;
-                    p *= 2.0;
-                    bp *= 1.5;
+                    a *= .75;
+                    p *= 2.;
+                    bp *= 1.;
                 }
                 return total;
             }
@@ -100,9 +100,9 @@ Shader "Unlit/PortalBack"{
             fixed4 frag (v2f i) : SV_Target{
                 float t = _Time.w * 1.2;
 
-                float2 d1 = float2(t, t * 0.5);
-                float2 d2 = float2(t * 2.0, t * -4.0);
-                float2 d3 = float2(t * -6.0, t * 8.0);
+                float2 d1 = float2(t, t * .5);
+                float2 d2 = float2(t * 2., t * -4.);
+                float2 d3 = float2(t * -6., t * 8.);
 
                 float p1 = perlinNoise(i.vertex.xy - d1);
                 float p2 = perlinNoise(i.vertex.xy + d2);
@@ -110,10 +110,10 @@ Shader "Unlit/PortalBack"{
 
                 float pn = lerp(p1, p2, p3);  
                     
-                float3 color1 = _Color.rgb;
-                float3 color2 = _Color2.rgb;
+                float3 color1 = _Color;
+                float3 color2 = _Color2;
 
-                return float4(lerp(color1, color2, pn), 1.0);
+                return float4(lerp(color1, color2, pn), 1.);
             }
             ENDCG
         }
