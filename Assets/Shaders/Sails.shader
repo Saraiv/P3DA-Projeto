@@ -1,6 +1,5 @@
 Shader "Custom/Sails"{
     Properties{
-        _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
         _Color1 ("Color", Color) = (1,1,1,1)
         _Color2 ("Color2", Color) = (1,1,1,1)
@@ -21,7 +20,6 @@ Shader "Custom/Sails"{
         };
 
         sampler2D _MainTex;
-        half4 _Color;
         half _WindStrength;
         half _WindSpeed;
         float3 _WindDirection;

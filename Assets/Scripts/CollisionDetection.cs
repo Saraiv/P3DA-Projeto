@@ -14,7 +14,7 @@ public class CollisionDetection : MonoBehaviour{
     public void Start(){
         mat.SetVector("_Position", new Vector3(0, 0, 0));
         mat.SetFloat("_GlowRange", 0.0f);
-        mat.SetFloat("_GlowFalloff", 0.2f);
+        mat.SetFloat("_GlowFalloff", 0.02f);
         mat.SetFloat("_DissolveAmount", 0.0f);
         finished = false;
         timer = 0;

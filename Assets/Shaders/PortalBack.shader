@@ -29,20 +29,20 @@ Shader "Unlit/PortalBack"{
             fixed4 _Color2;
 
             float randomNoise(float2 p){
-                return frac((sin(dot(p, float2(127.1, 311.7))) * 43758.5453123));
+                return frac(sin(dot(p, float2(127.1, 311.7))) * 43758.5453123);
             }
 
             float BINoise(float2 p){
-                float tiles = 50.;
+                float tiles = 50.0;
 
-                float2 base = floor(p/tiles);
+                float2 base = floor(p / tiles);
                 p = frac(p / tiles);
-                float2 f = smoothstep(0., 1., p);
+                float2 f = smoothstep(0.0, 1.0, p);
 
                 float q11 = randomNoise(base);
-                float q12 = randomNoise(float2(base.x, base.y + 1.));
-                float q21 = randomNoise(float2(base.x+1., base.y));
-                float q22 = randomNoise(float2(base.x+1., base.y + 1.));
+                float q12 = randomNoise(float2(base.x, base.y + 1.0));
+                float q21 = randomNoise(float2(base.x + 1.0, base.y));
+                float q22 = randomNoise(float2(base.x + 1.0, base.y + 1.0));
 
                 float r1 = lerp(q11, q21, f.x);
                 float r2 = lerp(q12, q22, f.x);
@@ -51,7 +51,7 @@ Shader "Unlit/PortalBack"{
             }
 
             float2 gradn(float2 p){
-                float ep = .09;
+                float ep = 0.09;
                 float gradx = BINoise(float2(p.x + ep, p.y)) - BINoise(float2(p.x - ep, p.y));
                 float grady = BINoise(float2(p.x, p.y + ep)) - BINoise(float2(p.x, p.y - ep));
                 return float2(gradx, grady);
@@ -64,27 +64,27 @@ Shader "Unlit/PortalBack"{
             }
 
             float perlinNoise(float2 p){
-                float t = _Time.w * 3.;
-                float a = .5;
-                float total = 0.;
+                float t = _Time.w * 3.0;
+                float a = 0.5;
+                float total = 0.0;
                 float2 bp = p;
 
-                for (float i = 1.; i < 7.; i++ ){
+                for (int i = 1; i < 7; ++i){
                     p += t * 1.6;
                     bp -= t * 2.6;
                     
-                    float2 gr = gradn(i * p * .34 + t * 1.) * 100. * 100.;
+                    float2 gr = gradn(i * p * 0.34 + t) * 100.0;
                     
-                    gr = mul(makeRotM2(i * t * .05 + .8), gr);
+                    gr = mul(makeRotM2(i * t * 0.05 + 0.8), gr);
                     
                     p += gr;
                     
-                    total += (sin(BINoise(p) * 7.) * .5 + .5) * a;
+                    total += (sin(BINoise(p) * 7.0) * 0.5 + 0.5) * a;
                     
-                    p = lerp(bp, p, .77);
+                    p = lerp(bp, p, 0.77);
                     
-                    a *= .75;
-                    p *= 2.;
+                    a *= 0.75;
+                    p *= 2.0;
                     bp *= 1.5;
                 }
                 return total;
@@ -100,20 +100,20 @@ Shader "Unlit/PortalBack"{
             fixed4 frag (v2f i) : SV_Target{
                 float t = _Time.w * 1.2;
 
-                float2 d1 = float2(t * 1., t * .5);
-                float2 d2 = float2(t * 2., t * -4.);
-                float2 d3 = float2(t * -6., t * 8.);
+                float2 d1 = float2(t, t * 0.5);
+                float2 d2 = float2(t * 2.0, t * -4.0);
+                float2 d3 = float2(t * -6.0, t * 8.0);
 
-                float p1 = perlinNoise(i.vertex - d1);
-                float p2 = perlinNoise(i.vertex + d2);
-                float p3 = perlinNoise(i.vertex - d3);
+                float p1 = perlinNoise(i.vertex.xy - d1);
+                float p2 = perlinNoise(i.vertex.xy + d2);
+                float p3 = perlinNoise(i.vertex.xy - d3);
 
                 float pn = lerp(p1, p2, p3);  
                     
-                float3 color1 = _Color;
-                float3 color2 = _Color2;
+                float3 color1 = _Color.rgb;
+                float3 color2 = _Color2.rgb;
 
-                return float4(lerp(color1, color2, pn), 1.);
+                return float4(lerp(color1, color2, pn), 1.0);
             }
             ENDCG
         }
